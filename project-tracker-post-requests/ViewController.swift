@@ -30,6 +30,10 @@ class ProjectsViewController: UIViewController {
         loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+    }
+    
     // MARK: - Private Methods
     
     private func configureTableView() {

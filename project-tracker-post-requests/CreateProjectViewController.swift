@@ -18,17 +18,35 @@ class CreateProjectViewController: UIViewController {
     
     
     @IBAction func createButtonPressed(_ sender: UIButton) {
+        guard let project = createProjectFromField() else {
+            return
+        }
         
-        self.navigationController?.popViewController(animated: true)
+        ProjectAPIClient.manager.postProject(project: project) { (result) in
+            switch result {
+            case .success(let success):
+                self.navigationController?.popViewController(animated: true)
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
+    private func createProjectFromField() -> Project? {
+        guard let name = nameTextField.text else {return nil}
+        
+        return Project(name: name, dueDate: formatAirTableDate(date: datePicker.date))
+    }
+    
+    private func formatAirTableDate(date: Date) -> String {
+        return date.description.components(separatedBy: .whitespaces)[0]
+    }
 
 }

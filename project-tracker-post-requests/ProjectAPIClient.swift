@@ -17,7 +17,7 @@ struct ProjectAPIClient {
     // MARK: - Internal Methods
     
     func getProjects(completionHandler: @escaping (Result<[Project], AppError>) -> Void) {
-        NetworkHelper.manager.getData(from: airtableURL) { result in
+        NetworkHelper.manager.performData(from: airtableURL, htttpMethod: .get, completionHandler: { (result) in
             switch result {
             case let .failure(error):
                 completionHandler(.failure(error))
@@ -31,7 +31,8 @@ struct ProjectAPIClient {
                     completionHandler(.failure(.couldNotParseJSON(rawError: error)))
                 }
             }
-        }
+
+        })
     }
     
     // MARK: - Private Properties and Initializers

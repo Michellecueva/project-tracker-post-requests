@@ -8,18 +8,33 @@
 
 import Foundation
 
+enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
+}
+
+
 class NetworkHelper {
     static let manager = NetworkHelper()
     
-    func getData(from url: URL,
-                 completionHandler: @escaping ((Result<Data, AppError>) -> Void)) {
-        self.urlSession.dataTask(with: url) { (data, response, error) in
+    // completionHandler: Result enum with data success, Apeeror in failure
+    
+    func performData(from url: URL, htttpMethod: HTTPMethod, data: Data? = nil,
+                     completionHandler: @escaping ((Result<Data, AppError>) -> Void)) {
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = htttpMethod.rawValue
+        request.httpBody = data
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        self.urlSession.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data else {
                     completionHandler(.failure(.noDataReceived))
                     return
                 }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                
+                guard let response = response as? HTTPURLResponse, (200...299) ~= response.statusCode else {
                     completionHandler(.failure(.badStatusCode))
                     return
                 }
@@ -28,16 +43,18 @@ class NetworkHelper {
                     let error = error as NSError
                     if error.domain == NSURLErrorDomain && error.code == NSURLErrorNotConnectedToInternet {
                         completionHandler(.failure(.noInternetConnection))
-                        return
                     } else {
                         completionHandler(.failure(.other(rawError: error)))
-                        return
                     }
                 }
+                
                 completionHandler(.success(data))
-            }
+                }
             }.resume()
+            
+        
     }
+    
     
     private init() {}
     

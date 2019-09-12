@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		287E3FF8232A8C3F00C2A26D /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E3FF7232A8C3F00C2A26D /* Secrets.swift */; };
+		287E3FFA232A9B9600C2A26D /* CreateProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287E3FF9232A9B9600C2A26D /* CreateProjectViewController.swift */; };
 		543AB10E2327F67A005B0E32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543AB10D2327F67A005B0E32 /* AppDelegate.swift */; };
 		543AB1102327F67A005B0E32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543AB10F2327F67A005B0E32 /* ViewController.swift */; };
 		543AB1132327F67A005B0E32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 543AB1112327F67A005B0E32 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		287E3FF7232A8C3F00C2A26D /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		287E3FF9232A9B9600C2A26D /* CreateProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectViewController.swift; sourceTree = "<group>"; };
 		543AB10A2327F67A005B0E32 /* project-tracker-post-requests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-tracker-post-requests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		543AB10D2327F67A005B0E32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		543AB10F2327F67A005B0E32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				287E3FF7232A8C3F00C2A26D /* Secrets.swift */,
 				543AB137232A7414005B0E32 /* ProjectAPIClient.swift */,
 				543AB1112327F67A005B0E32 /* Main.storyboard */,
+				287E3FF9232A9B9600C2A26D /* CreateProjectViewController.swift */,
 				543AB1142327F67C005B0E32 /* Assets.xcassets */,
 				543AB1162327F67C005B0E32 /* LaunchScreen.storyboard */,
 				543AB1192327F67C005B0E32 /* Info.plist */,
@@ -219,6 +222,7 @@
 			files = (
 				543AB134232A738B005B0E32 /* AppError.swift in Sources */,
 				543AB1102327F67A005B0E32 /* ViewController.swift in Sources */,
+				287E3FFA232A9B9600C2A26D /* CreateProjectViewController.swift in Sources */,
 				287E3FF8232A8C3F00C2A26D /* Secrets.swift in Sources */,
 				543AB136232A73B7005B0E32 /* NetworkHelper.swift in Sources */,
 				543AB138232A7414005B0E32 /* ProjectAPIClient.swift in Sources */,
